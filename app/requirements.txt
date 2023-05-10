@@ -24,7 +24,7 @@ debugpy==1.6.6
 decorator==5.1.1
 deepface==0.0.79
 deprecation==2.1.0
-dlib==19.24.1
+dlib-bin
 dnspython==2.3.0
 Eel==0.14.0
 entrypoints==0.4
