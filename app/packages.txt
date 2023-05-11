@@ -1,5 +1,6 @@
 libgl1
 cmake
+ffmpeg
 libssl-dev
 libgl1-mesa-glx
 libsm6 
