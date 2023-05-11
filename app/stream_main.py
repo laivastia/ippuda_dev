@@ -59,54 +59,6 @@ def doMorphing(img1, img2, duration, frame_rate, output):
         tri = make_delaunay(size[1], size[0], list3, img1, img2)
         generate_morph_sequence(duration, frame_rate, img1, img2, points1, points2, tri, size, output)
 
-      
-def play_video(self):
-        # filename = 'E:\side_job\Korean_Consulting_project\Face-Morphing-master\output.mp4'
-        filename = cpath+r'\video_output.mp4'
-
-        self.cap = cv2.VideoCapture(filename)
-
-        # get video dimensions
-        width = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        height = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        # calculate scale factor to match canvas size
-        if width > height:
-            scale = 500 / width
-        else:
-            scale = 500 / height
-
-        # update video canvas with each frame of the video
-        ret, frame = self.cap.read()
-        if ret:
-            # resize frame to match canvas size
-            frame = cv2.resize(frame, (int(scale*width), int(scale*height)))
-            self.frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            # res = Image.fromarray(cv2.cvtColor(np.uint8(morphed_frame), cv2.COLOR_BGR2RGB))
-            # self.frame = Image.fromarray(self.frame)
-            self.frame = Image.fromarray(np.uint8(self.frame))
-            self.frame = ImageTk.PhotoImage(self.frame)
-            self.video_canvas.create_image(0, 0, anchor=tk.NW, image=self.frame)
-            self.master.after(10, self.update_video)
-
-def update_video(self):
-        # update video canvas with each frame of the video
-        ret, frame = self.cap.read()
-        if ret:
-                # calculate scale factor to match canvas size
-                width = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-                height = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-                if width > height:
-                        scale = 500 / width
-                else:
-                        scale = 500 / height
-                
-                # resize frame to match canvas size
-                frame = cv2.resize(frame, (int(scale*width), int(scale*height)))
-                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                self.frame = Image.fromarray(frame)
-                self.frame = ImageTk.PhotoImage(self.frame)
-                self.video_canvas.create_image(0, 0, anchor=tk.NW, image=self.frame)
-                self.master.after(10, self.update_video)            
 st.title('이뿌다 가상 성형 AI')
 
 st.markdown(
