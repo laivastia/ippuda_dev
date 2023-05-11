@@ -110,6 +110,7 @@ retina-face==0.0.13
 rich==13.3.5
 rsa==4.9
 scikit-learn
+skia-python
 scipy==1.9.1
 shapely==2.0.1
 six==1.16.0
