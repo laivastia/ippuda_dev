@@ -66,6 +66,8 @@ jupyter-client==8.0.3
 jupyter-core==5.2.0
 keras==2.11.0
 libclang==15.0.6.1
+libgl1-mesa-dev
+libgl1
 Mako==1.2.4
 Markdown==3.4.1
 markdown-it-py==2.2.0
