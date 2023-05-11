@@ -5,7 +5,6 @@ altgraph==0.17.3
 asttokens==2.2.1
 astunparse==1.6.3
 attrs==23.1.0
-auto-py-to-exe==2.32.0
 backcall==0.2.0
 backports.zoneinfo==0.2.1
 beautifulsoup4==4.11.2
@@ -32,9 +31,6 @@ ffmpeg==1.4
 ffmpeg-python==0.2.0
 filelock==3.9.0
 fire==0.5.0
-Flask==2.2.3
-Flask-Migrate==4.0.4
-Flask-SQLAlchemy==3.0.3
 flatbuffers==23.3.3
 future==0.18.2
 gast==0.3.3
