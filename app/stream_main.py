@@ -185,7 +185,7 @@ elif app_mode == '가상 성형 AI':
             im1 = image_src_save.save(folder_selected+"/src.jpg")
             im2 = image_target_save.save(folder_selected+"/target.jpg")
            
-            exec(open(cpath+r"app\src\codeX\utils\align_images_leo.py").read())
+            exec(open(r"app/src/codeX/utils/align_images_leo.py").read())
 
             img_name = os.listdir(ALIGNED_IMAGES_DIR)       
             image = Image.open(ALIGNED_IMAGES_DIR+'/'+img_name[0])
