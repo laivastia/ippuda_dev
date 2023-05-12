@@ -113,7 +113,7 @@ path = os.getcwd()
 # print(path)
 
 class LandmarksDetector:
-    def __init__(self, predictor_model_path=path+r'app\src\codeX\utils\shape_predictor_68_face_landmarks.dat'):
+    def __init__(self, predictor_model_path=r'app\src\codeX\utils\shape_predictor_68_face_landmarks.dat'):
         """
         :param predictor_model_path: path to shape_predictor_68_face_landmarks.dat file
         """
