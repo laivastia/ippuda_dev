@@ -5,7 +5,7 @@ import argparse
 # from face_alignment import image_align
 # from landmarks_detector import LandmarksDetector
 import multiprocessing
-from morph_streamlit import *
+from stream_main import *
 
 def unpack_bz2(src_path):
     data = bz2.BZ2File(src_path).read()
