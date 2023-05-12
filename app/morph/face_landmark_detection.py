@@ -72,7 +72,7 @@ def crop_image_help(img1,img2):
 def generate_face_correspondences(theImage1, theImage2):
     # Detect the points of face.
     detector = dlib.get_frontal_face_detector()
-    predictor = dlib.shape_predictor('src/codeX/utils/shape_predictor_68_face_landmarks.dat')
+    predictor = dlib.shape_predictor(r'app/src/codeX/utils/shape_predictor_68_face_landmarks.dat')
     corresp = np.zeros((68,2))
 
     imgList = crop_image(theImage1,theImage2)
