@@ -2,7 +2,7 @@
 import streamlit as st
 import os
 import cv2
-from PIL import Image, ImageTk
+from PIL import Image
 from sys import path
 import numpy as np
 cpath = os.getcwd()
@@ -14,20 +14,16 @@ from morph.delaunay_triangulation import make_delaunay
 from morph.face_morph import generate_morph_sequence
 import morph.analysis_morph
 
-import subprocess
-import argparse
-import shutil
 import os
 from sys import path
 import time
 # from streamlit_image_comparison import image_comparison
 from streamlit.components.v1 import html
-from streamlit_javascript import st_javascript
+# from streamlit_javascript import st_javascript
 import streamlit.components.v1 as components
-from streamlit_modal import Modal
+# from streamlit_modal import Modal
 from pymongo.mongo_client import MongoClient
-import gridfs
-
+# import gridfs
 
 DEMO_IMAGE = r'static\uploads\4.png'
 DEMO_VIDEO = r'E:\side_job\Korean_Consulting_project\flask_project\src\video_output.mp4'
