@@ -69,7 +69,7 @@ mdurl==0.1.2
 mtcnn==0.1.1
 nest-asyncio==1.5.6
 networkx==2.8.6
-numpy==1.20.1
+numpy==1.23.3
 oauthlib==3.2.2
 opencv_python==4.5.1.48
 opt-einsum==3.3.0
@@ -118,7 +118,7 @@ smmap==5.0.0
 soupsieve==2.4
 SQLAlchemy==1.4.41
 stack-data==0.6.2
-streamlit==0.78.0
+streamlit==1.22.0
 streamlit-apexjs==0.0.3
 streamlit-javascript==0.1.5
 streamlit-modal==0.1.0
