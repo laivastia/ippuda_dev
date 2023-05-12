@@ -2,7 +2,7 @@ import cv2
 import dlib
 import numpy as np
 detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor(r'src\codeX\utils\shape_predictor_68_face_landmarks.dat')
+predictor = dlib.shape_predictor(r'app/src/codeX/utils/shape_predictor_68_face_landmarks.dat')
 from main import *
 
 def rect_to_bb(rect):
