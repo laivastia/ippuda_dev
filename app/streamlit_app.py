@@ -49,7 +49,7 @@ js_share = '''
 #         print(e)
 #     return db
 
-@st.experimental_singleton(suppress_st_warning=True)
+@st.cache_resource
 def init_connection():
         global db
         client =  MongoClient("mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority")       
