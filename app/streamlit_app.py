@@ -33,21 +33,34 @@ js_share = '''
         src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63550914fb6a811c">
     '''
     
-@st.cache_resource
-def init_connection():
-    global db
-    uri = "mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
-    # Create a new client and connect to the server
-    client = MongoClient(uri)
-    # Send a ping to confirm a successful connection
-    try:
-        client.admin.command('ping')
-        db = client["Ippuda"]
+# @st.cache_resource
+# def init_connection():
+#     global db
+#     uri = "mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
+#     # Create a new client and connect to the server
+#     client = MongoClient(uri)
+#     # Send a ping to confirm a successful connection
+#     try:
+#         client.admin.command('ping')
+#         db = client["Ippuda"]
 
-        print("Pinged your deployment. You successfully connected to MongoDB!")
-    except Exception as e:
-        print(e)
+#         print("Pinged your deployment. You successfully connected to MongoDB!")
+#     except Exception as e:
+#         print(e)
+#     return db
+
+@st.experimental_singleton(suppress_st_warning=True)
+def init_connection():
+        global db
+        client =  MongoClient("mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority")       
+        try:
+                client.admin.command('ping')
+                db = client["Ippuda"]
+                print("Pinged your deployment. You successfully connected to MongoDB!")
+        except:
+                print(e)
     return db
+
 @st.cache_resource
 # Define a function to reset the database
 def reset_db():
