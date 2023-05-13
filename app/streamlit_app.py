@@ -59,7 +59,7 @@ def init_connection():
                 print("Pinged your deployment. You successfully connected to MongoDB!")
         except:
                 print(e)
-    return db
+        return db
 
 @st.cache_resource
 # Define a function to reset the database
