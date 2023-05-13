@@ -2,7 +2,7 @@
 import streamlit as st
 import os
 import cv2
-from PIL import Image, ImageTk
+from PIL import Image
 from sys import path
 import numpy as np
 # cpath = os.getcwd()
