@@ -23,14 +23,15 @@ from pymongo.mongo_client import MongoClient
 # import gridfs
 from io import BytesIO
 from bson.binary import Binary
-import subprocess
+import certifi
+ca = certifi.where()
 
 @st.cache_resource
 def init_connection():
     global db
     uri = "mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
     # Create a new client and connect to the server
-    client = MongoClient(uri)
+    client = MongoClient(uri, tlsCAFile=ca)
     # Send a ping to confirm a successful connection
     try:
         client.admin.command('ping')
