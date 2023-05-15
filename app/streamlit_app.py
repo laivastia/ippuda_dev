@@ -25,10 +25,11 @@ from io import BytesIO
 from bson.binary import Binary
 import subprocess
 
-
+DB_USER = st.secrets["mongo"]["DB_USER"]
+DB_PASSWORD = st.secrets["mongo"]["DB_PASSWORD"]
 # @st.cache_resource
 def init_connection():
-    URI = f"mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
+    URI = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
     # Create a new client and connect to the server
     client = MongoClient(URI)
     return client
@@ -41,9 +42,6 @@ def reset_db():
         db[collection].drop()
     print("Database reset successful!")
 
-# client = init_connection()
-########################################################################
-# collection = db["src"]
 ################################################################################################    
 
 def doMorphing(img1, img2,duration, frame_rate,dir1,dir2):
