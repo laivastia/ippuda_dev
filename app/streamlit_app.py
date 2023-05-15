@@ -25,14 +25,12 @@ from io import BytesIO
 from bson.binary import Binary
 import subprocess
 
-st.set_page_config(page_title="이뿌다", page_icon="🔍")
 
 # @st.cache_resource
 def init_connection():
-    global db
-    uri = f"mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
+    URI = f"mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
     # Create a new client and connect to the server
-    client = MongoClient(uri)
+    client = MongoClient(URI)
     return client
 
 # @st.cache_resource
