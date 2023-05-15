@@ -212,7 +212,7 @@ def main() :
                 RAW_IMAGES_DIR = db.list_collection_names()[0] #args.raw_dir
                 print(RAW_IMAGES_DIR)
                 # ALIGNED_IMAGES_DIR = db["alligned"] #folder_selected + '/aligned_images' # r'images\aligned_images' #args.aligned_dir
-                exec(open(r"app\src\codeX\utils\align_images_leo.py").read(), globals(),globals())
+                exec(open(r"app/src/codeX/utils/align_images_leo.py").read(), globals(),globals())
                 ########################################################################
                 # Find the image data in the MongoDB collection
                 img1 =  db["alligned"].find_one({'metadata.filename': 'my_image.jpg_alligned.jpg'})
