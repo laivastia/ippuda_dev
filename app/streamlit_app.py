@@ -44,7 +44,7 @@ def init_connection():
     except Exception as e:
         print(e)
     return db
-@st.cache_resource
+# @st.cache_resource
 # Define a function to reset the database
 def reset_db():
     collection_name = ['src','alligned','w_line','wo_line']
