@@ -28,14 +28,9 @@ from io import BytesIO
 from bson.binary import Binary
 import subprocess
 import certifi
-ca = certifi.where()
 
-js_share = '''
-        type="text/javascript"
-        src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63550914fb6a811c">
-    '''
-    
-@st.cache_resource
+ca = certifi.where()
+# @st.cache_resource
 def init_connection():
     global db
     uri = "mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority, tlsCAFile=ca"
@@ -45,7 +40,6 @@ def init_connection():
     try:
         client.admin.command('ping')
         db = client["Ippuda"]
-
         print("Pinged your deployment. You successfully connected to MongoDB!")
     except Exception as e:
         print(e)
