@@ -30,7 +30,7 @@ DB_PASSWORD = st.secrets["mongo"]["password"]
 
 @st.cache_resource
 def init_connection():
-    URI = f"mongodb+srv://hnovation:IPPUDA2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
+    URI = f"mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
     # Create a new client and connect to the server
     client = MongoClient(URI)
     return client
