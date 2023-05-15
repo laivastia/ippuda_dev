@@ -7,6 +7,7 @@ from subprocess import Popen, PIPE
 from PIL import Image
 from io import BytesIO
 from bson.binary import Binary
+import tempfile
 
 cpath = os.getcwd()
 # print(cpath)
@@ -69,8 +70,9 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
     fourcc = cv2.VideoWriter_fourcc(*'avc1')
     dims = (512, 512)
     fps = 20
-    output= r'video_output.mp4'
-    video_out = cv2.VideoWriter(output, fourcc, fps, dims)
+    output_dir = tempfile.mkdtemp()
+    output_path = os.path.join(output_dir, "output.mp4")
+    video_out = cv2.VideoWriter(output_path, fourcc, fps, dims)
     for j in range(0, num_images):
 
         # Convert Mat to float data type
@@ -154,3 +156,4 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
     # p.stdin.close()
     video_out.release()
     # p.wait()
+return output_path
