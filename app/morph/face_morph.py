@@ -156,4 +156,4 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
     # p.stdin.close()
     video_out.release()
     # p.wait()
-return output_path
+    return output_path
