@@ -36,7 +36,7 @@ DB_PASSWORD = st.secrets["mongo"]["DB_PASSWORD"]
 
 @st.cache_resource
 def init_connection():
-    return pymongo.MongoClient(**st.secrets["mongo"])
+    return MongoClient(**st.secrets["mongo"])
 # @st.cache_resource
 # Define a function to reset the database
 def reset_db():
