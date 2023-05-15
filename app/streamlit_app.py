@@ -28,11 +28,17 @@ import subprocess
 DB_USER = st.secrets["mongo"]["DB_USER"]
 DB_PASSWORD = st.secrets["mongo"]["DB_PASSWORD"]
 # @st.cache_resource
+# def init_connection():
+#     URI = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
+#     # Create a new client and connect to the server
+#     client = MongoClient(URI)
+#     return client
+
+@st.cache_resource
 def init_connection():
-    URI = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
-    # Create a new client and connect to the server
-    client = MongoClient(URI)
-    return client
+    return pymongo.MongoClient(**st.secrets["mongo"])
+
+client = init_connection()
 
 # @st.cache_resource
 # Define a function to reset the database
