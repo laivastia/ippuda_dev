@@ -69,7 +69,7 @@ except:
 #     print("Database reset successful!")
 
 # client = init_connection()
-db = init_connection()
+# db = init_connection()
 ########################################################################
 # collection = db["src"]
 ################################################################################################    
