@@ -30,7 +30,7 @@ import subprocess
 import certifi
 
 ca = certifi.where()
-@st.cache_resource
+# @st.cache_resource
 def init_connection():
     global db
 #     uri = "mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority, tlsCAFile=ca"
@@ -44,13 +44,13 @@ def init_connection():
     except Exception as e:
         print(e)
     return db
-@st.cache_data
-# Define a function to reset the database
-def reset_db():
-    collection_name = ['src','alligned','w_line','wo_line']
-    for collection in collection_name:
-        db[collection].drop()
-    print("Database reset successful!")
+# @st.cache_data
+# # Define a function to reset the database
+# def reset_db():
+#     collection_name = ['src','alligned','w_line','wo_line']
+#     for collection in collection_name:
+#         db[collection].drop()
+#     print("Database reset successful!")
 
 # client = init_connection()
 db = init_connection()
@@ -65,7 +65,7 @@ def doMorphing(img1, img2,duration, frame_rate,dir1,dir2):
 
 a = []
 a.append(time.time())
-reset_db()
+# reset_db()
 
 st.title('이뿌다 가상 성형 AI')
 st.markdown(
