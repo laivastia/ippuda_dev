@@ -27,11 +27,18 @@ import subprocess
 
 @st.cache_resource
 def init_connection():
-    URI = f"mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
+    global db
+    uri = "mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
     # Create a new client and connect to the server
-    client = MongoClient(URI)
-    return client
-
+    client = MongoClient(uri)
+    # Send a ping to confirm a successful connection
+    try:
+        client.admin.command('ping')
+        db = client["Ippuda"]
+        print("Pinged your deployment. You successfully connected to MongoDB!")
+    except Exception as e:
+        print(e)
+    return db
 # @st.cache_resource
 # def init_connection():
 #     return MongoClient(**st.secrets["mongo"])
@@ -54,8 +61,9 @@ a = []
 a.append(time.time())
 
 def main() :
-    client = init_connection()
-    db = client["Ippuda"]
+#     client = init_connection()
+#     db = client["Ippuda"]
+    db = init_connection()
     reset_db()
 
     st.title('이뿌다 가상 성형 AI')
