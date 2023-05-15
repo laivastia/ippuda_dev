@@ -70,7 +70,7 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
     fourcc = cv2.VideoWriter_fourcc(*'avc1')
     dims = (512, 512)
     fps = 20
-    output_dir = tempfile.mkdtemp()
+    output_dir = 'app/videos'
     output_path = os.path.join(output_dir, "output.mp4")
     video_out = cv2.VideoWriter(output_path, fourcc, fps, dims)
     for j in range(0, num_images):
