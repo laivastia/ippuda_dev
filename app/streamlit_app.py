@@ -234,7 +234,7 @@ def main() :
                 print(img1.shape,img2.shape)
                 out_folder =  db["video"]
                 doMorphing(img1,img2,int(5),int(20),db["w_line"],db["wo_line"]) ## Video Time
-                video_file = open(r'C:\tmp\video_output.mp4', 'rb')
+                video_file = open(r'video_output.mp4', 'rb')
                 video_bytes = video_file.read()
                 st.video(video_bytes)       
                 index = int(round(face_confidence * 100))
