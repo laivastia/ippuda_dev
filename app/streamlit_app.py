@@ -26,7 +26,7 @@ from bson.binary import Binary
 import certifi
 ca = certifi.where()
 
-@st.cache_resource
+# @st.cache_resource
 def init_connection():
     global db
     uri = "mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
