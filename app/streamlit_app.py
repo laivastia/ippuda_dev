@@ -54,7 +54,7 @@ def init_connection():
         global db
         client =  MongoClient("mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority")       
         try:
-                client.admin.command('ping')
+#                 client.admin.command('ping')
                 db = client["Ippuda"]
                 print("Pinged your deployment. You successfully connected to MongoDB!")
         except:
