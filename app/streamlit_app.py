@@ -25,6 +25,8 @@ from io import BytesIO
 from bson.binary import Binary
 import subprocess
 
+st.set_page_config(page_title="이뿌다", page_icon="🔍")
+
 # @st.cache_resource
 def init_connection():
     global db
