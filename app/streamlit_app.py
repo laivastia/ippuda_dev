@@ -30,20 +30,23 @@ import subprocess
 import certifi
 
 ca = certifi.where()
-# @st.cache_data
-# def init_connection():
-# global db
-#     uri = "mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority, tlsCAFile=ca"
-# Create a new client and connect to the server
-client = MongoClient('mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
-# Send a ping to confirm a successful connection
-try:
-    client.admin.command('ping')
-    db = client["Ippuda"]
-    print("Pinged your deployment. You successfully connected to MongoDB!")
-except Exception as e:
-    print(e)
-#     return db
+
+@st.cache_resource
+def init_connection():
+    global db
+    uri = "mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
+    # Create a new client and connect to the server
+    client = MongoClient('mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
+    # Send a ping to confirm a successful connection
+    try:
+        client.admin.command('ping')
+        db = client["Ippuda"]
+
+        print("Pinged your deployment. You successfully connected to MongoDB!")
+    except Exception as e:
+        print(e)
+    return db
+
 # @st.cache_data
 # # Define a function to reset the database
 # def reset_db():
