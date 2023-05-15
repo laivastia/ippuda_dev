@@ -234,10 +234,10 @@ def main() :
                 print(img1.shape,img2.shape)
                 out_folder =  db["video"]
                 doMorphing(img1,img2,int(5),int(20),db["w_line"],db["wo_line"]) ## Video Time
-                output_path = r'app\videos\output.mp4'
-                video_file = open(output_path, 'rb')
-                video_bytes = video_file.read()
-                st.video(video_bytes)       
+#                 output_path = r'app\videos\output.mp4'
+#                 video_file = open(output_path, 'rb')
+#                 video_bytes = video_file.read()
+#                 st.video(video_bytes)       
                 index = int(round(face_confidence * 100))
                 # Find the image data in the MongoDB collection
                 db_out_image_data =  db["wo_line"].find_one({'metadata.filename': f"sequence_{index}.jpg"})
