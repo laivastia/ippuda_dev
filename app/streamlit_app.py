@@ -25,9 +25,6 @@ from io import BytesIO
 from bson.binary import Binary
 import subprocess
 
-DB_USER = st.secrets["mongo"]["username"]
-DB_PASSWORD = st.secrets["mongo"]["password"]
-
 @st.cache_resource
 def init_connection():
     URI = f"mongodb+srv://hnovation:Ippuda2023@ippuda.kw3gi49.mongodb.net/?retryWrites=true&w=majority"
