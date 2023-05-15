@@ -57,7 +57,7 @@ def doMorphing(img1, img2,duration, frame_rate,dir1,dir2):
         [size, img1, img2, points1, points2, list3] = generate_face_correspondences(img1, img2)
         tri = make_delaunay(size[1], size[0], list3, img1, img2)
         output_path = generate_morph_sequence(duration, frame_rate, img1, img2, points1, points2, tri, size,dir1,dir2)
-    return output_path
+        return output_path
 
 a = []
 a.append(time.time())
