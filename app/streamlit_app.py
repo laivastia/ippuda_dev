@@ -56,7 +56,8 @@ def reset_db():
 def doMorphing(img1, img2,duration, frame_rate,dir1,dir2):
         [size, img1, img2, points1, points2, list3] = generate_face_correspondences(img1, img2)
         tri = make_delaunay(size[1], size[0], list3, img1, img2)
-        generate_morph_sequence(duration, frame_rate, img1, img2, points1, points2, tri, size,dir1,dir2)
+        output_path = generate_morph_sequence(duration, frame_rate, img1, img2, points1, points2, tri, size,dir1,dir2)
+    return output_path
 
 a = []
 a.append(time.time())
@@ -233,8 +234,8 @@ def main() :
                 # img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
                 print(img1.shape,img2.shape)
                 out_folder =  db["video"]
-                doMorphing(img1,img2,int(5),int(20),db["w_line"],db["wo_line"]) ## Video Time
-                video_file = open(r'video_output.mp4', 'rb')
+                output_path = doMorphing(img1,img2,int(5),int(20),db["w_line"],db["wo_line"]) ## Video Time
+                video_file = open(output_path, 'rb')
                 video_bytes = video_file.read()
                 st.video(video_bytes)       
                 index = int(round(face_confidence * 100))
