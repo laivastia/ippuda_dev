@@ -340,6 +340,7 @@ def main() :
                     '''
         if st.button('초기화',key='reset'):
             reset_db()
+            st.cache_resource.clear()
 
         # Execute your app
         st.markdown('---')
