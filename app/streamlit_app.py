@@ -134,7 +134,10 @@ def main() :
         face_confidence = st.sidebar.slider('얼마나 바꿔볼래?', min_value=0.0, max_value=1.0, value=0.5, key=f"slider_{time.time()}")
         st.sidebar.markdown('---')
         src_file_buffer = st.sidebar.file_uploader("내 사진 올리기",type=["jpg","jpeg","png"],key = 'myPhoto')
+        st.cache_data.clear()
         target_file_buffer = st.sidebar.file_uploader("워너비 사진 올리기",type=["jpg","jpeg","png"],key='celebPhoto')
+        st.cache_data.clear()
+
         st.sidebar.markdown('---')
         print(src_file_buffer)
         with st.sidebar:
