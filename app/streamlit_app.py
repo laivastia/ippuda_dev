@@ -65,6 +65,7 @@ def main() :
 #     db = client["Ippuda"]
     db = init_connection()
     reset_db()
+    st.cache_resource.clear()
 
     st.title('이뿌다 가상 성형 AI')
     st.markdown(
