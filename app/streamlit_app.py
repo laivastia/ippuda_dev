@@ -42,8 +42,6 @@ def init_connection():
         print(e)
     return db
 @st.cache_resource
-# def init_connection():
-#     return MongoClient(**st.secrets["mongo"])
 # @st.cache_data(ttl=120)
 # Define a function to reset the database
 def reset_db():
