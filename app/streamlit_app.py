@@ -109,7 +109,7 @@ def main() :
         )
         st.video('https://youtu.be/1SGFEPEMaN4')
     elif app_mode == '가상 성형 AI':
-
+        reset_db()
         st.sidebar.markdown('---')
         st.markdown(
         """
