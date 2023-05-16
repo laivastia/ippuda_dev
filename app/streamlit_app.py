@@ -45,6 +45,7 @@ def init_connection():
 # @st.cache_data(ttl=120)
 # Define a function to reset the database
 def reset_db():
+    st.cache_resource.clear()
     collection_name = ['src','alligned','w_line','wo_line']
     for collection in collection_name:
         db[collection].drop()
@@ -65,7 +66,6 @@ def main() :
 #     db = client["Ippuda"]
     db = init_connection()
     reset_db()
-    st.cache_resource.clear()
 
     st.title('이뿌다 가상 성형 AI')
     st.markdown(
