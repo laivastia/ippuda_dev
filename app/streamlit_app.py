@@ -338,6 +338,9 @@ def main() :
                     <script async src="https://static.addtoany.com/menu/page.js"></script>
                     <!-- AddToAny END -->
                     '''
+        if st.button('초기화',key='reset'):
+            reset_db()
+
         # Execute your app
         st.markdown('---')
         st.subheader("공유 해볼까~")
