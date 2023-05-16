@@ -92,6 +92,7 @@ def main() :
                                         key = len(a)
                                         )
     if app_mode == 'About App':
+        reset_db()
         st.markdown('In this App we are using Dlib for creating morphing App')
         st.markdown(
         """
