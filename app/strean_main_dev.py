@@ -148,8 +148,7 @@ elif app_mode == '가상 성형 AI':
             global image1
             global image2
 
-            raw_images = np.append(MY_IMAGE, TARGET_IMAGE, axis=0)
-            align_img = align_images_dev(raw_images)
+            MY_IMAGE, TARGET_IMAGE = align_images_dev(MY_IMAGE, TARGET_IMAGE)
 
             image = Image.open(MY_IMAGE)
             image = np.array(image.resize((500 , 500)))

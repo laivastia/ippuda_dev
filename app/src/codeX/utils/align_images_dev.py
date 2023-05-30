@@ -127,7 +127,7 @@ def unpack_bz2(src_path):
         fp.write(data)
     return dst_path
 
-def align_images_dev(RAW_IMAGES):
+def align_images_dev(MY_IMAGE, TARGET_IMAGE):
     if __name__ == "__main__":
         """
         Extracts and aligns all faces from images using DLib and a function from original FFHQ dataset preparation step
@@ -148,16 +148,12 @@ def align_images_dev(RAW_IMAGES):
         ALIGNED_IMAGES_DIR = r'images\aligned_images' #args.aligned_dir
 
         landmarks_detector = LandmarksDetector()
-        for img in os.listdir(RAW_IMAGES):
-            print('Aligning ...')
-            try:
-                print('Getting landmarks...')
-                for i, face_landmarks in enumerate(landmarks_detector.get_landmarks(img), start=1):
-                    try:
-                        print('Starting face alignment...')
-                        align_img = image_align(img, face_landmarks, output_size=args.output_size, x_scale=args.x_scale, y_scale=args.y_scale, em_scale=args.em_scale, alpha=args.use_alpha)
-                        return align_img
-                    except:
-                        print("Exception in face alignment!")
-            except:
-                print("Exception in landmark detection!")
+        print('Aligning ...')
+        try:
+            print('Getting landmarks...')
+            my_image = [image_align(MY_IMAGE, face_landmarks, output_size=args.output_size, x_scale=args.x_scale, y_scale=args.y_scale, em_scale=args.em_scale, alpha=args.use_alpha) for i, face_landmarks in enumerate(landmarks_detector.get_landmarks(MY_IMAGE), start=1)]
+            target_image = [image_align(TARGET_IMAGE, face_landmarks, output_size=args.output_size, x_scale=args.x_scale, y_scale=args.y_scale, em_scale=args.em_scale, alpha=args.use_alpha) for i, face_landmarks in enumerate(landmarks_detector.get_landmarks(TARGET_IMAGE), start=1)]
+            return my_image, target_image
+        except:
+            print("Exception in landmark detection!")
+    return my_image, target_image
