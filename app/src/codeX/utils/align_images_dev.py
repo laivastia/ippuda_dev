@@ -127,7 +127,7 @@ def unpack_bz2(src_path):
         fp.write(data)
     return dst_path
 
-def align_images_dev(MY_IMAGE, TARGET_IMAGE):
+def align_images_dev(my_image, target_image):
     if __name__ == "__main__":
         """
         Extracts and aligns all faces from images using DLib and a function from original FFHQ dataset preparation step
@@ -151,8 +151,8 @@ def align_images_dev(MY_IMAGE, TARGET_IMAGE):
         print('Aligning ...')
         try:
             print('Getting landmarks...')
-            my_image = [image_align(MY_IMAGE, face_landmarks, output_size=args.output_size, x_scale=args.x_scale, y_scale=args.y_scale, em_scale=args.em_scale, alpha=args.use_alpha) for i, face_landmarks in enumerate(landmarks_detector.get_landmarks(MY_IMAGE), start=1)]
-            target_image = [image_align(TARGET_IMAGE, face_landmarks, output_size=args.output_size, x_scale=args.x_scale, y_scale=args.y_scale, em_scale=args.em_scale, alpha=args.use_alpha) for i, face_landmarks in enumerate(landmarks_detector.get_landmarks(TARGET_IMAGE), start=1)]
-            return my_image, target_image
+            myimage = [image_align(my_image, face_landmarks, output_size=args.output_size, x_scale=args.x_scale, y_scale=args.y_scale, em_scale=args.em_scale, alpha=args.use_alpha) for i, face_landmarks in enumerate(landmarks_detector.get_landmarks(my_image), start=1)]
+            targetimg = [image_align(target_image, face_landmarks, output_size=args.output_size, x_scale=args.x_scale, y_scale=args.y_scale, em_scale=args.em_scale, alpha=args.use_alpha) for i, face_landmarks in enumerate(landmarks_detector.get_landmarks(target_image), start=1)]
+            return [myimage, targetimg]
         except:
             print("Exception in landmark detection!")
