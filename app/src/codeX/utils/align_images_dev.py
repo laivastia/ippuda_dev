@@ -156,4 +156,3 @@ def align_images_dev(MY_IMAGE, TARGET_IMAGE):
             return my_image, target_image
         except:
             print("Exception in landmark detection!")
-    return my_image, target_image
