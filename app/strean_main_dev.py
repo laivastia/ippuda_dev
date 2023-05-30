@@ -110,8 +110,8 @@ elif app_mode == '가상 성형 AI':
     CHANGE_GRADE = st.sidebar.slider('얼마나 바꿔볼래?' , min_value=0.0 , max_value=1.0 , value=0.5 , key='slider')
     st.sidebar.markdown('---')
 
-    MY_IMAGE = st.sidebar.file_uploader("내 사진 올리기" , type=[ "jpg" , "jpeg" , "png" ] , key='myPhoto')
-    TARGET_IMAGE = st.sidebar.file_uploader("워너비 사진 올리기" , type=[ "jpg" , "jpeg" , "png" ] , key='celebPhoto')
+    src_image = st.sidebar.file_uploader("내 사진 올리기" , type=[ "jpg" , "jpeg" , "png" ] , key='myPhoto')
+    src_target_image = st.sidebar.file_uploader("워너비 사진 올리기" , type=[ "jpg" , "jpeg" , "png" ] , key='celebPhoto')
     st.sidebar.markdown('---')
 
     with st.sidebar:
@@ -131,15 +131,15 @@ elif app_mode == '가상 성형 AI':
             '''
         components.html(html_string)
 
-    print(MY_IMAGE)
-    if MY_IMAGE is not None:
-        MY_IMAGE = np.array(Image.open(MY_IMAGE))
+    print(src_image)
+    if src_image is not None:
+        myImage = np.array(Image.open(src_image))
         st.sidebar.text('내 사진')
-        st.sidebar.image(MY_IMAGE)
-    if TARGET_IMAGE is not None:
-        TARGET_IMAGE = np.array(Image.open(TARGET_IMAGE))
+        st.sidebar.image(myImage)
+    if src_target_image is not None:
+        targetImage = np.array(Image.open(src_target_image))
         st.sidebar.text('워너비 사진')
-        st.sidebar.image(TARGET_IMAGE)
+        st.sidebar.image(targetImage)
     if st.button("가상 성형 시작 !" , key='morph_start'):
         with st.spinner('이뿌게 성형 중이에용 ~!!'):
             global RAW_IMAGES_DIR
@@ -148,7 +148,7 @@ elif app_mode == '가상 성형 AI':
             global image1
             global image2
 
-            MY_IMAGE, TARGET_IMAGE = align_images_dev(MY_IMAGE, TARGET_IMAGE)
+            MY_IMAGE, TARGET_IMAGE = align_images_dev(myImage, targetImage)
 
             image = Image.open(MY_IMAGE)
             image = np.array(image.resize((500 , 500)))
