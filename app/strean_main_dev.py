@@ -56,13 +56,12 @@ count = 0
 
 
 def mode_select(num):
-    num = 0 + num
     mode = [ 'About App' , '가상 성형 AI' , '피부 진단 AI' ]
     app = st.sidebar.selectbox('choose the Appmode' ,
                                     mode ,
                                     key=str(num)
                                     )
-
+    num += 1
     return app
 
 
