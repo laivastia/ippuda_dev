@@ -29,7 +29,8 @@ js_share = '''
 def doMorphing(img1 , img2 , duration , frame_rate , output):
     [ size , img1 , img2 , points1 , points2 , list3 ] = generate_face_correspondences(img1 , img2)
     tri = make_delaunay(size[ 1 ] , size[ 0 ] , list3 , img1 , img2)
-    generate_morph_sequence(duration , frame_rate , img1 , img2 , points1 , points2 , tri , size , output)
+    res, res_origin = generate_morph_sequence(duration , frame_rate , img1 , img2 , points1 , points2 , tri , size , output)
+    return res, res_origin
 
 
 st.title('이뿌다 가상 성형 AI')
@@ -156,15 +157,11 @@ elif app_mode == '가상 성형 AI':
             image1 = cv2.imread(MY_IMAGE)
             image2 = cv2.imread(TARGET_IMAGE)
             out_folder = cpath + r'\video_output.mp4'
-            doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
-            video_file = open(out_folder , 'rb')
-            video_bytes = video_file.read()
-            st.video(video_bytes)
-            filename = out_folder
-            img_name_res = os.listdir('sequence_res\wo_line')
+            # doMorphing 변수 선언(100개의 numpy array)
+            morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
 
             index = int(round(CHANGE_GRADE * 100))
-            image_res = np.array(Image.open('sequence_res\wo_line' + '/' + img_name_res[ index ]))
+            image_res = np.array(Image.open(morph_array[index]))
             st.image(image_res)
         st.success('성형 끗 !!')
     st.markdown('---')

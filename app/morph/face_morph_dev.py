@@ -60,21 +60,21 @@ def morph_triangle(img1, img2, img, t1, t2, t, alpha) :
 def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_list,size,output):
     # dir = 'E:\side_job\Korean_Consulting_project\Face-Morphing-master\sequence_res\w_line/'
     # dir2 = 'E:\side_job\Korean_Consulting_project\Face-Morphing-master\sequence_res\wo_line/'
-    dir = cpath+r'\sequence_res\w_line/'
-    dir2 = cpath+r'\sequence_res\wo_line/'
-
-    isExist = os.path.exists(dir)
-    isExist2 = os.path.exists(dir)
-
-    if not isExist:
-        os.makedirs(dir)
-    if not isExist2:
-        os.makedirs(dir2)
-
-    for f in os.listdir(dir):
-        os.remove(os.path.join(dir, f))
-    for f in os.listdir(dir2):
-        os.remove(os.path.join(dir2, f))
+    # dir = cpath+r'\sequence_res\w_line/'
+    # dir2 = cpath+r'\sequence_res\wo_line/'
+    #
+    # isExist = os.path.exists(dir)
+    # isExist2 = os.path.exists(dir)
+    #
+    # if not isExist:
+    #     os.makedirs(dir)
+    # if not isExist2:
+    #     os.makedirs(dir2)
+    #
+    # for f in os.listdir(dir):
+    #     os.remove(os.path.join(dir, f))
+    # for f in os.listdir(dir2):
+    #     os.remove(os.path.join(dir2, f))
     num_images = int(duration*frame_rate)
 
     # p = Popen(['ffmpeg', '-y', '-f', 'image2pipe', '-r', str(frame_rate),'-s',str(size[1])+'x'+str(size[0]), '-i', '-', '-c:v', 'libx264', '-crf', '25','-vf','scale=trunc(iw/2)*2:trunc(ih/2)*2','-pix_fmt','yuv420p', output], stdin=PIPE)
@@ -83,6 +83,8 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
     dims = (512, 512)
     fps = 20
     video_out = cv2.VideoWriter(output, fourcc, fps, dims)
+    data = np.array()
+    data_orign = np.array()
     for j in range(0, num_images):
 
         # Convert Mat to float data type
@@ -141,9 +143,13 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
         # if j%(num_images/1)==0:
             # res.save('E:\side_job\Korean_Consulting_project\Face-Morphing-master\sequence_res\w_line/'+ 'sequence_'+ str(round(j//(num_images/5)))+'.jpg')
             # res_orgin.save('E:\side_job\Korean_Consulting_project\Face-Morphing-master\sequence_res\wo_line/'+ 'sequence_'+ str(round(j//(num_images/5)))+'.jpg')
-        res.save(dir+ 'sequence_'+ str(round(j))+'.jpg') #//(num_images/5))
-        res_orgin.save(dir2+ 'sequence_'+ str(round(j))+'.jpg') #//(num_images/5))
-
+        # res.save(dir+ 'sequence_'+ str(round(j))+'.jpg') #//(num_images/5))
+        # res_orgin.save(dir2+ 'sequence_'+ str(round(j))+'.jpg') #//(num_images/5))
+        np.append(data, res, axis=0)
+        np.append(data_orign , res_orgin , axis=0)
+    return data, data_orign
     # p.stdin.close()
     video_out.release()
     # p.wait()
+
+# 이미지 numpy 저장
