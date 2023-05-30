@@ -136,6 +136,7 @@ elif app_mode == '가상 성형 AI':
         st.sidebar.text('내 사진')
         st.sidebar.image(MY_IMAGE)
         MY_IMAGE = np.array(MY_IMAGE)
+        st.write(MY_IMAGE)
     if TARGET_IMAGE is not None:
         st.sidebar.text('워너비 사진')
         st.sidebar.image(TARGET_IMAGE)
