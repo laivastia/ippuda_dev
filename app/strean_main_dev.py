@@ -133,9 +133,11 @@ elif app_mode == '가상 성형 AI':
 
     print(MY_IMAGE)
     if MY_IMAGE is not None:
+        MY_IMAGE = np.array(MY_IMAGE)
         st.sidebar.text('내 사진')
         st.sidebar.image(MY_IMAGE)
     if TARGET_IMAGE is not None:
+        TARGET_IMAGE = np.array(TARGET_IMAGE)
         st.sidebar.text('워너비 사진')
         st.sidebar.image(TARGET_IMAGE)
     if st.button("가상 성형 시작 !" , key='morph_start'):
@@ -146,7 +148,7 @@ elif app_mode == '가상 성형 AI':
             global image1
             global image2
 
-            raw_images = np.array(MY_IMAGE, TARGET_IMAGE)
+            raw_images = np.append(MY_IMAGE, TARGET_IMAGE, axis=0)
             align_img = align_images_dev(raw_images)
 
             image = Image.open(MY_IMAGE)
