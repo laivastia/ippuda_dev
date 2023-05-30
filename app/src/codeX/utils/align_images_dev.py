@@ -3,12 +3,36 @@ import sys
 import bz2
 import argparse
 # from face_alignment_dev import image_align
-from landmarks_detector import LandmarksDetector
+# from landmarks_detector import LandmarksDetector
 import multiprocessing
 import numpy as np
 import scipy.ndimage
 import os
 import PIL.Image
+import dlib
+import os
+path = os.getcwd()
+# print(path)
+class LandmarksDetector:
+    def __init__(self, predictor_model_path=path+r'app\src\codeX\utils\shape_predictor_68_face_landmarks.dat'):
+        print(predictor_model_path)
+        """
+        :param predictor_model_path: path to shape_predictor_68_face_landmarks.dat file
+        """
+        self.detector = dlib.get_frontal_face_detector() # cnn_face_detection_model_v1 also can be used
+        self.shape_predictor = dlib.shape_predictor(predictor_model_path)
+
+    def get_landmarks(self, image):
+        img = dlib.load_rgb_image(image)
+        dets = self.detector(img, 1)
+
+        for detection in dets:
+            try:
+                face_landmarks = [(item.x, item.y) for item in self.shape_predictor(img, detection).parts()]
+                yield face_landmarks
+            except:
+                print("Exception in get_landmarks()!")
+
 
 def image_align(src_file, face_landmarks, output_size=1024, transform_size=4096, enable_padding=True, x_scale=1, y_scale=1, em_scale=0.1, alpha=False):
         # Align function from FFHQ dataset pre-processing step
