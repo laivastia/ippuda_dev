@@ -55,14 +55,14 @@ st.sidebar.subheader('가상성형/피부진단 AI')
 count = 0
 
 
-def mode_select(count):
+def mode_select(num):
     mode = [ 'About App' , '가상 성형 AI' , '피부 진단 AI' ]
-    app_mode = st.sidebar.selectbox('choose the Appmode' ,
+    app = st.sidebar.selectbox('choose the Appmode' ,
                                     mode ,
-                                    key=count
+                                    key=str(num)
                                     )
-    count += 1
-    return app_mode
+    num += 1
+    return app
 
 
 app_mode = mode_select(count)
