@@ -14,7 +14,7 @@ import os
 path = os.getcwd()
 # print(path)
 class LandmarksDetector:
-    def __init__(self, predictor_model_path=path+r'\app\src\codeX\utils\shape_predictor_68_face_landmarks.dat'):
+    def __init__(self, predictor_model_path=path+r'app/src/codeX/utils/shape_predictor_68_face_landmarks.dat'):
         print(predictor_model_path)
         self.detector = dlib.get_frontal_face_detector() # cnn_face_detection_model_v1 also can be used
         self.shape_predictor = dlib.shape_predictor(predictor_model_path)
