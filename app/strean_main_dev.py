@@ -156,8 +156,8 @@ elif app_mode == '가상 성형 AI':
 
             ########################################################################
 
-            image1 = cv2.imread(MY_IMAGE)
-            image2 = cv2.imread(TARGET_IMAGE)
+            image1 = cv2.imdecode(MY_IMAGE, cv2.IMREAD_COLOR)
+            image2 = cv2.imdecode(TARGET_IMAGE, cv2.IMREAD_COLOR)
             out_folder = cpath + r'\video_output.mp4'
             # doMorphing 변수 선언(100개의 numpy array)
             morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
