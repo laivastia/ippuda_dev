@@ -147,8 +147,8 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
         # res_orgin.save(dir2+ 'sequence_'+ str(round(j))+'.jpg') #//(num_images/5))
         data.append(res)
         data_origin.append(res_origin)
-    res_data = np.array(data)
-    res_data_origin = np.array(data_origin)
+    res_data = np.array(data, dtype=object)
+    res_data_origin = np.array(data_origin, dtype=object)
     return res_data, res_data_origin
     # p.stdin.close()
     video_out.release()
