@@ -148,9 +148,11 @@ elif app_mode == '가상 성형 AI':
             MY_IMAGE = raw_image[0][0]
             if 'MY_IMAGE' not in st.session_state:
                 st.session_state[ 'MY_IMAGE' ] = MY_IMAGE
+            st.session_state[ 'MY_IMAGE' ] = MY_IMAGE
             TARGET_IMAGE = raw_image[1][0]
             if 'TARGET_IMAGE' not in st.session_state:
                 st.session_state[ 'TARGET_IMAGE' ] = TARGET_IMAGE
+            st.session_state[ 'TARGET_IMAGE' ] = TARGET_IMAGE
 
             image = np.array(MY_IMAGE.resize((500 , 500)))
 
@@ -163,6 +165,8 @@ elif app_mode == '가상 성형 AI':
             morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
             if 'morph_array_origin' not in st.session_state:
                 st.session_state[ 'morph_array_origin' ] = morph_array_origin
+            st.session_state[ 'morph_array_origin' ] = morph_array_origin
+
             index = int(CHANGE_GRADE * 100)
             st.image(morph_array_origin[index])
             # image_res = Image.fromarray(morph_array[index])
