@@ -149,9 +149,10 @@ elif app_mode == '가상 성형 AI':
             global image2
 
             raw_image = align_images_dev(myImage, targetImage)
-            st.write(raw_image)
             MY_IMAGE = raw_image[0][0]
             TARGET_IMAGE = raw_image[1][0]
+            st.image(MY_IMAGE)
+            st.image(TARGET_IMAGE)
 
             image = np.array(MY_IMAGE.resize((500 , 500)))
 
@@ -163,8 +164,7 @@ elif app_mode == '가상 성형 AI':
             # doMorphing 변수 선언(100개의 numpy array)
             morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
             index = int(round(CHANGE_GRADE * 100))
-            for i in morph_array_origin():
-                st.image(i)
+            st.image(morph_array_origin[index])
             # image_res = Image.fromarray(morph_array[index])
             # st.image(image_res)
         st.success('성형 끗 !!')
