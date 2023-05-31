@@ -71,7 +71,7 @@ def image_align(src_file, face_landmarks, output_size=1024, transform_size=4096,
         # if not src_file:
         #     print('\nsrc_file 변수를 확인하십시오.')
         #     return
-        img = PIL.Image.open(src_file).convert('RGBA').convert('RGB')
+        img = PIL.Image.fromarray(src_file).convert('RGBA').convert('RGB')
 
         # Shrink.
         shrink = int(np.floor(qsize / output_size * 0.5))
