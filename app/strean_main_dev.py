@@ -132,6 +132,10 @@ elif app_mode == '가상 성형 AI':
         components.html(html_string)
 
     print(src_image)
+    global MY_IMAGE
+    global TARGET_IMAGE
+    global morph_array
+    global morph_array_origin
     if src_image is not None:
         myImage = np.array(Image.open(src_image))
         st.sidebar.text('내 사진')
@@ -142,10 +146,6 @@ elif app_mode == '가상 성형 AI':
         st.sidebar.image(targetImage)
     if st.button("가상 성형 시작 !" , key='morph_start'):
         with st.spinner('이뿌게 성형 중이에용 ~!!'):
-            global MY_IMAGE
-            global TARGET_IMAGE
-            global morph_array
-            global morph_array_origin
 
             raw_image = align_images_dev(myImage, targetImage)
             MY_IMAGE = raw_image[0][0]
