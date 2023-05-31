@@ -162,7 +162,7 @@ elif app_mode == '가상 성형 AI':
             # doMorphing 변수 선언(100개의 numpy array)
             morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
             index = int(round(CHANGE_GRADE * 100))
-            st.image(morph_array[index])
+            st.image(morph_array_origin[index])
             # image_res = Image.fromarray(morph_array[index])
             # st.image(image_res)
         st.success('성형 끗 !!')
