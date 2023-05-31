@@ -163,7 +163,7 @@ elif app_mode == '가상 성형 AI':
             morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
 
             index = int(round(CHANGE_GRADE * 100))
-            image_res = np.array(Image.open(morph_array[index]))
+            image_res = np.array(Image.fromarray(morph_array[index]))
             st.image(image_res)
         st.success('성형 끗 !!')
     st.markdown('---')
