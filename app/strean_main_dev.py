@@ -142,17 +142,14 @@ elif app_mode == '가상 성형 AI':
         st.sidebar.image(targetImage)
     if st.button("가상 성형 시작 !" , key='morph_start'):
         with st.spinner('이뿌게 성형 중이에용 ~!!'):
-            global RAW_IMAGES_DIR
-            global ALIGNED_IMAGES_DIR
-            global img_name
-            global image1
-            global image2
+            global MY_IMAGE
+            global TARGET_IMAGE
+            global morph_array
+            global morph_array_origin
 
             raw_image = align_images_dev(myImage, targetImage)
             MY_IMAGE = raw_image[0][0]
             TARGET_IMAGE = raw_image[1][0]
-            st.image(MY_IMAGE)
-            st.image(TARGET_IMAGE)
 
             image = np.array(MY_IMAGE.resize((500 , 500)))
 
@@ -160,8 +157,6 @@ elif app_mode == '가상 성형 AI':
 
             image1 = cv2.cvtColor(np.array(MY_IMAGE), cv2.COLOR_RGB2BGR)
             image2 = cv2.cvtColor(np.array(TARGET_IMAGE), cv2.COLOR_RGB2BGR)
-            st.image(image1)
-            st.image(image2)
             out_folder = cpath + r'\video_output.mp4'
             # doMorphing 변수 선언(100개의 numpy array)
             morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
@@ -172,25 +167,24 @@ elif app_mode == '가상 성형 AI':
         st.success('성형 끗 !!')
     st.markdown('---')
     index = int(st.number_input('몇퍼센트 결과볼래?' , value=50 , step=1 , format="%d"))
-    CHANGE_GRADE2 = st.slider('내사진 <<<<<----->>>>> 워너비' , min_value=0 , max_value=100 , value=index)
+    CHANGE_GRADE2 = st.slider('내사진 <<<<<----->>>>> 워너비' , min_value=0 , max_value=99 , value=index)
     if st.button("결과 보기!" , key='res'):
-        RAW_IMAGES_DIR = "db"  # args.raw_dir
-        ALIGNED_IMAGES_DIR = "db" + '/aligned_images'  # r'images\aligned_images' #args.aligned_dir
-        img_name = os.listdir(ALIGNED_IMAGES_DIR)
+        # RAW_IMAGES_DIR = "db"  # args.raw_dir
+        # ALIGNED_IMAGES_DIR = "db" + '/aligned_images'  # r'images\aligned_images' #args.aligned_dir
+        # img_name = os.listdir(ALIGNED_IMAGES_DIR)
 
-        img1 = ALIGNED_IMAGES_DIR + '/' + img_name[ 0 ]
-        img2 = ALIGNED_IMAGES_DIR + '/' + img_name[ 1 ]
-        image1 = cv2.imread(img1)
-        image2 = cv2.imread(img2)
-        img_name_res = os.listdir('sequence_res\wo_line')
+        # img1 = ALIGNED_IMAGES_DIR + '/' + img_name[ 0 ]
+        # img2 = ALIGNED_IMAGES_DIR + '/' + img_name[ 1 ]
+        # image1 = cv2.imread(img1)
+        # image2 = cv2.imread(img2)
+        # img_name_res = os.listdir('sequence_res\wo_line')
         index = CHANGE_GRADE2
 
-        image_res = np.array(Image.open('sequence_res\wo_line' + '/sequence_' + str(index) + '.jpg'))
         print(str(index) + '.jpg')
-        st.image(image_res)
-        ana_image = cv2.imread('sequence_res\wo_line' + '/' + img_name_res[ index ])
-        res_tot = morph.analysis_morph.analysis(image1 , ana_image)
-        res_tot_2 = morph.analysis_morph.analysis(image1 , image2)
+        st.image(morph_array_origin[index])
+        ana_image = cv2.cvtColor(np.array(morph_array_origin[index]), cv2.COLOR_RGB2BGR)
+        res_tot = morph.analysis_morph.analysis(MY_IMAGE , ana_image)
+        res_tot_2 = morph.analysis_morph.analysis(MY_IMAGE , TARGET_IMAGE)
 
         left_eye_res = round(res_tot[ 0 ] , 2)
         R_eye_res = round(res_tot[ 1 ] , 2)
