@@ -160,6 +160,8 @@ elif app_mode == '가상 성형 AI':
             out_folder = cpath + r'\video_output.mp4'
             # doMorphing 변수 선언(100개의 numpy array)
             morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
+            if 'morph_array_origin' not in st.session_state:
+                st.session_state[ 'morph_array_origin' ] = morph_array_origin
             index = int(CHANGE_GRADE * 100)
             st.image(morph_array_origin[index])
             # image_res = Image.fromarray(morph_array[index])
@@ -179,7 +181,7 @@ elif app_mode == '가상 성형 AI':
         # image2 = cv2.imread(img2)
         # img_name_res = os.listdir('sequence_res\wo_line')
         index = CHANGE_GRADE2
-        sequence_list = morph_array_origin
+        sequence_list = st.session_state[ 'morph_array_origin' ]
 
         print(str(index) + '.jpg')
         st.image(sequence_list[index])
