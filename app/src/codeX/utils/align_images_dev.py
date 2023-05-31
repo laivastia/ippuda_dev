@@ -68,9 +68,9 @@ def image_align(src_file, face_landmarks, output_size=1024, transform_size=4096,
         qsize = np.hypot(*x) * 2
 
         # Load in-the-wild image.
-        if not src_file:
-            print('\nsrc_file 변수를 확인하십시오.')
-            return
+        # if not src_file:
+        #     print('\nsrc_file 변수를 확인하십시오.')
+        #     return
         img = PIL.Image.open(src_file).convert('RGBA').convert('RGB')
 
         # Shrink.
