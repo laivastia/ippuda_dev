@@ -149,6 +149,7 @@ elif app_mode == '가상 성형 AI':
             global image2
 
             raw_image = align_images_dev(myImage, targetImage)
+            st.write(raw_image)
             MY_IMAGE = raw_image[0][0]
             TARGET_IMAGE = raw_image[1][0]
 
