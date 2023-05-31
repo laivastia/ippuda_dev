@@ -179,10 +179,11 @@ elif app_mode == '가상 성형 AI':
         # image2 = cv2.imread(img2)
         # img_name_res = os.listdir('sequence_res\wo_line')
         index = CHANGE_GRADE2
+        sequence_list = morph_array_origin
 
         print(str(index) + '.jpg')
-        st.image(morph_array_origin[index])
-        ana_image = cv2.cvtColor(np.array(morph_array_origin[index]), cv2.COLOR_RGB2BGR)
+        st.image(sequence_list[index])
+        ana_image = cv2.cvtColor(np.array(sequence_list[index]), cv2.COLOR_RGB2BGR)
         res_tot = morph.analysis_morph.analysis(MY_IMAGE , ana_image)
         res_tot_2 = morph.analysis_morph.analysis(MY_IMAGE , TARGET_IMAGE)
 
