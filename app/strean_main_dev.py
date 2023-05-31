@@ -107,7 +107,7 @@ elif app_mode == '가상 성형 AI':
 
     max_faces = st.sidebar.number_input('Maximum Number of Pictures' , value=2 , min_value=1 , key='num_input')
     st.sidebar.markdown('---')
-    CHANGE_GRADE = st.sidebar.slider('얼마나 바꿔볼래?' , min_value=0.0 , max_value=1.0 , value=0.5 , key='slider')
+    CHANGE_GRADE = st.sidebar.slider('얼마나 바꿔볼래?' , min_value=0.0 , max_value=0.99 , value=0.5 , key='slider')
     st.sidebar.markdown('---')
 
     src_image = st.sidebar.file_uploader("내 사진 올리기" , type=[ "jpg" , "jpeg" , "png" ] , key='myPhoto')
@@ -165,7 +165,7 @@ elif app_mode == '가상 성형 AI':
             out_folder = cpath + r'\video_output.mp4'
             # doMorphing 변수 선언(100개의 numpy array)
             morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
-            index = int(round(CHANGE_GRADE * 100))
+            index = int(CHANGE_GRADE * 100)
             st.image(morph_array_origin[index])
             # image_res = Image.fromarray(morph_array[index])
             # st.image(image_res)
