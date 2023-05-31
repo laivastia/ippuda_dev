@@ -83,8 +83,8 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
     dims = (512, 512)
     fps = 20
     video_out = cv2.VideoWriter(output, fourcc, fps, dims)
-    data = np.array()
-    data_orign = np.array()
+    data = np.array([])
+    data_orign = np.array([])
     for j in range(0, num_images):
 
         # Convert Mat to float data type
