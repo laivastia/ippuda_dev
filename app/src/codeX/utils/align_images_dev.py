@@ -26,7 +26,7 @@ class LandmarksDetector:
 
         for detection in dets:
             try:
-                face_landmarks = [(item.x, item.y) for item in self.shape_predictor(img, detection).parts()]
+                face_landmarks = [(item.x, item.y) for item in self.shape_predictor(image, detection).parts()]
                 yield face_landmarks
             except:
                 print("Exception in get_landmarks()!")
