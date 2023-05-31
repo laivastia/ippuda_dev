@@ -21,7 +21,7 @@ class LandmarksDetector:
 
     def get_landmarks(self, image):
 
-        img = dlib.load_rgb_image(PIL.Image.open(image))
+        img = dlib.load_rgb_image(PIL.Image.fromarray(image))
         dets = self.detector(img, 1)
 
         for detection in dets:
