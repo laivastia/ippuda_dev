@@ -146,18 +146,20 @@ elif app_mode == '가상 성형 AI':
 
             raw_image = align_images_dev(myImage, targetImage)
             MY_IMAGE = raw_image[0][0]
-            if 'MY_IMAGE' not in st.session_state:
-                st.session_state[ 'MY_IMAGE' ] = MY_IMAGE
             TARGET_IMAGE = raw_image[1][0]
-            if 'TARGET_IMAGE' not in st.session_state:
-                st.session_state[ 'TARGET_IMAGE' ] = TARGET_IMAGE
 
             image = np.array(MY_IMAGE.resize((500 , 500)))
 
             ########################################################################
 
             image1 = cv2.cvtColor(np.array(MY_IMAGE), cv2.COLOR_RGB2BGR)
+            if 'MY_IMAGE' not in st.session_state:
+                st.session_state[ 'MY_IMAGE' ] = image1
+
             image2 = cv2.cvtColor(np.array(TARGET_IMAGE), cv2.COLOR_RGB2BGR)
+            if 'TARGET_IMAGE' not in st.session_state:
+                st.session_state[ 'TARGET_IMAGE' ] = image2
+
             out_folder = cpath + r'\video_output.mp4'
             # doMorphing 변수 선언(100개의 numpy array)
             morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
