@@ -132,10 +132,7 @@ elif app_mode == '가상 성형 AI':
         components.html(html_string)
 
     print(src_image)
-    global MY_IMAGE
-    global TARGET_IMAGE
     global morph_array
-    global morph_array_origin
     if src_image is not None:
         myImage = np.array(Image.open(src_image))
         st.sidebar.text('내 사진')
@@ -149,7 +146,11 @@ elif app_mode == '가상 성형 AI':
 
             raw_image = align_images_dev(myImage, targetImage)
             MY_IMAGE = raw_image[0][0]
+            if 'MY_IMAGE' not in st.session_state:
+                st.session_state[ 'MY_IMAGE' ] = MY_IMAGE
             TARGET_IMAGE = raw_image[1][0]
+            if 'TARGET_IMAGE' not in st.session_state:
+                st.session_state[ 'TARGET_IMAGE' ] = TARGET_IMAGE
 
             image = np.array(MY_IMAGE.resize((500 , 500)))
 
@@ -186,8 +187,8 @@ elif app_mode == '가상 성형 AI':
         print(str(index) + '.jpg')
         st.image(sequence_list[index])
         ana_image = cv2.cvtColor(np.array(sequence_list[index]), cv2.COLOR_RGB2BGR)
-        res_tot = morph.analysis_morph.analysis(MY_IMAGE , ana_image)
-        res_tot_2 = morph.analysis_morph.analysis(MY_IMAGE , TARGET_IMAGE)
+        res_tot = morph.analysis_morph.analysis(st.session_state[ 'MY_IMAGE' ] , ana_image)
+        res_tot_2 = morph.analysis_morph.analysis(st.session_state[ 'MY_IMAGE' ] , st.session_state[ 'TARGET_IMAGE' ])
 
         left_eye_res = round(res_tot[ 0 ] , 2)
         R_eye_res = round(res_tot[ 1 ] , 2)
