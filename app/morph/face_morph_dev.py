@@ -83,8 +83,8 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
     dims = (512, 512)
     fps = 20
     video_out = cv2.VideoWriter(output, fourcc, fps, dims)
-    data = np.array([])
-    data_orign = np.array([])
+    data = []
+    data_origin = []
     for j in range(0, num_images):
 
         # Convert Mat to float data type
@@ -136,7 +136,7 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
             cv2.line(morphed_frame, pt2, pt3, (255, 255, 255), 1, 8, 0)
             cv2.line(morphed_frame, pt3, pt1, (255, 255, 255), 1, 8, 0)
 
-        res_orgin = Image.fromarray(cv2.cvtColor(np.uint8(orgin), cv2.COLOR_BGR2RGB))
+        res_origin = Image.fromarray(cv2.cvtColor(np.uint8(orgin), cv2.COLOR_BGR2RGB))
         res = Image.fromarray(cv2.cvtColor(np.uint8(morphed_frame), cv2.COLOR_BGR2RGB))
         # res.save(p.stdin,'JPEG')
         video_out.write(np.uint8(morphed_frame))
@@ -145,9 +145,11 @@ def generate_morph_sequence(duration,frame_rate,img1,img2,points1,points2,tri_li
             # res_orgin.save('E:\side_job\Korean_Consulting_project\Face-Morphing-master\sequence_res\wo_line/'+ 'sequence_'+ str(round(j//(num_images/5)))+'.jpg')
         # res.save(dir+ 'sequence_'+ str(round(j))+'.jpg') #//(num_images/5))
         # res_orgin.save(dir2+ 'sequence_'+ str(round(j))+'.jpg') #//(num_images/5))
-        np.append(data, res, axis=0)
-        np.append(data_orign , res_orgin , axis=0)
-    return data, data_orign
+        data.append(res)
+        data_origin.append((res_origin))
+    res_data = np.append(data)
+    res_data_origin = np.append(data_origin)
+    return res_data, res_data_origin
     # p.stdin.close()
     video_out.release()
     # p.wait()
