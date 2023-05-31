@@ -160,6 +160,8 @@ elif app_mode == '가상 성형 AI':
 
             image1 = cv2.cvtColor(np.array(MY_IMAGE), cv2.COLOR_RGB2BGR)
             image2 = cv2.cvtColor(np.array(TARGET_IMAGE), cv2.COLOR_RGB2BGR)
+            st.image(image1)
+            st.image(image2)
             out_folder = cpath + r'\video_output.mp4'
             # doMorphing 변수 선언(100개의 numpy array)
             morph_array, morph_array_origin = doMorphing(image1 , image2 , int(5) , int(20) , out_folder)  ## Video Time
